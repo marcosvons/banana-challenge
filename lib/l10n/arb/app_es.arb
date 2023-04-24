@@ -1,7 +1,12 @@
 {
     "@@locale": "es",
-    "counterAppBarTitle": "Contador",
-    "@counterAppBarTitle": {
-        "description": "Texto mostrado en la AppBar de la página del contador"
-    }
+    "welcome": "Bienvenido",
+    "login": "Iniciar sesión",
+    "email": "Correo electrónico",
+    "password": "Contraseña",
+    "issuesError": "Estamos experimentando problemas, por favor intenta luego",
+    "networkError": "Error de conexión, intenta mas tarde",
+    "invalidCredentials": "Credenciales inválidas",
+    "unknownError": "Ocurrió un error, intenta mas tarde"
+
 }
