@@ -14,7 +14,7 @@ class LoginView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => AuthBloc(authRepository: getIt<IAuthRepository>()),
+      create: (context) => LoginCubit(),
       child: const LoginBody(),
     );
   }

@@ -27,34 +27,37 @@ class LoginBody extends StatelessWidget {
         );
       },
       child: Scaffold(
-        body: SingleChildScrollView(
-          child: Column(
-            children: [
-              TextFormField(
-                decoration: const InputDecoration(
-                  labelText: 'Email',
+        body: Center(
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                TextFormField(
+                  decoration: const InputDecoration(
+                    labelText: 'Email',
+                  ),
                 ),
-              ),
-              TextFormField(
-                decoration: const InputDecoration(
-                  labelText: 'Password',
+                TextFormField(
+                  decoration: const InputDecoration(
+                    labelText: 'Password',
+                  ),
                 ),
-              ),
-              BlocBuilder<LoginCubit, LoginState>(
-                builder: (context, state) {
-                  return ElevatedButton(
-                      onPressed: () {
-                        context.read<AuthBloc>().add(
-                              LoginRequested(
-                                email: state.email!,
-                                password: state.password!,
-                              ),
-                            );
-                      },
-                      child: const Text('Login'));
-                },
-              ),
-            ],
+                BlocBuilder<LoginCubit, LoginState>(
+                  builder: (context, state) {
+                    return ElevatedButton(
+                        onPressed: () {
+                          context.read<AuthBloc>().add(
+                                LoginRequested(
+                                  email: state.email!,
+                                  password: state.password!,
+                                ),
+                              );
+                        },
+                        child: const Text('Login'));
+                  },
+                ),
+              ],
+            ),
           ),
         ),
       ),
