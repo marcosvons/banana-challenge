@@ -1,4 +1,4 @@
 /// A Very Good Project created by Very Good CLI.
-library auth;
+library errors;
 
-export 'src/src.dart';
+export 'src/errors.dart';
