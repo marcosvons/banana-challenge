@@ -14,6 +14,8 @@ dependencies:
   dio: ^5.1.1
   errors:
     path: packages/errors
+  products:
+    path: packages/products
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.2
