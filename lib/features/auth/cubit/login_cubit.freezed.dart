@@ -18,19 +18,24 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$LoginState {
   String? get email => throw _privateConstructorUsedError;
   String? get password => throw _privateConstructorUsedError;
+  bool get showPassword => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? email, String? password) formValue,
+    required TResult Function(
+            String? email, String? password, bool showPassword)
+        formValue,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? email, String? password)? formValue,
+    TResult? Function(String? email, String? password, bool showPassword)?
+        formValue,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? email, String? password)? formValue,
+    TResult Function(String? email, String? password, bool showPassword)?
+        formValue,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -62,7 +67,7 @@ abstract class $LoginStateCopyWith<$Res> {
           LoginState value, $Res Function(LoginState) then) =
       _$LoginStateCopyWithImpl<$Res, LoginState>;
   @useResult
-  $Res call({String? email, String? password});
+  $Res call({String? email, String? password, bool showPassword});
 }
 
 /// @nodoc
@@ -80,6 +85,7 @@ class _$LoginStateCopyWithImpl<$Res, $Val extends LoginState>
   $Res call({
     Object? email = freezed,
     Object? password = freezed,
+    Object? showPassword = null,
   }) {
     return _then(_value.copyWith(
       email: freezed == email
@@ -90,6 +96,10 @@ class _$LoginStateCopyWithImpl<$Res, $Val extends LoginState>
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
               as String?,
+      showPassword: null == showPassword
+          ? _value.showPassword
+          : showPassword // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -101,7 +111,7 @@ abstract class _$$FormValueCopyWith<$Res> implements $LoginStateCopyWith<$Res> {
       __$$FormValueCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? email, String? password});
+  $Res call({String? email, String? password, bool showPassword});
 }
 
 /// @nodoc
@@ -117,6 +127,7 @@ class __$$FormValueCopyWithImpl<$Res>
   $Res call({
     Object? email = freezed,
     Object? password = freezed,
+    Object? showPassword = null,
   }) {
     return _then(_$FormValue(
       email: freezed == email
@@ -127,6 +138,10 @@ class __$$FormValueCopyWithImpl<$Res>
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
               as String?,
+      showPassword: null == showPassword
+          ? _value.showPassword
+          : showPassword // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -134,16 +149,21 @@ class __$$FormValueCopyWithImpl<$Res>
 /// @nodoc
 
 class _$FormValue implements FormValue {
-  const _$FormValue({required this.email, required this.password});
+  const _$FormValue(
+      {required this.email,
+      required this.password,
+      required this.showPassword});
 
   @override
   final String? email;
   @override
   final String? password;
+  @override
+  final bool showPassword;
 
   @override
   String toString() {
-    return 'LoginState.formValue(email: $email, password: $password)';
+    return 'LoginState.formValue(email: $email, password: $password, showPassword: $showPassword)';
   }
 
   @override
@@ -153,11 +173,13 @@ class _$FormValue implements FormValue {
             other is _$FormValue &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.password, password) ||
-                other.password == password));
+                other.password == password) &&
+            (identical(other.showPassword, showPassword) ||
+                other.showPassword == showPassword));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, email, password);
+  int get hashCode => Object.hash(runtimeType, email, password, showPassword);
 
   @JsonKey(ignore: true)
   @override
@@ -168,27 +190,31 @@ class _$FormValue implements FormValue {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? email, String? password) formValue,
+    required TResult Function(
+            String? email, String? password, bool showPassword)
+        formValue,
   }) {
-    return formValue(email, password);
+    return formValue(email, password, showPassword);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? email, String? password)? formValue,
+    TResult? Function(String? email, String? password, bool showPassword)?
+        formValue,
   }) {
-    return formValue?.call(email, password);
+    return formValue?.call(email, password, showPassword);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? email, String? password)? formValue,
+    TResult Function(String? email, String? password, bool showPassword)?
+        formValue,
     required TResult orElse(),
   }) {
     if (formValue != null) {
-      return formValue(email, password);
+      return formValue(email, password, showPassword);
     }
     return orElse();
   }
@@ -225,12 +251,15 @@ class _$FormValue implements FormValue {
 abstract class FormValue implements LoginState {
   const factory FormValue(
       {required final String? email,
-      required final String? password}) = _$FormValue;
+      required final String? password,
+      required final bool showPassword}) = _$FormValue;
 
   @override
   String? get email;
   @override
   String? get password;
+  @override
+  bool get showPassword;
   @override
   @JsonKey(ignore: true)
   _$$FormValueCopyWith<_$FormValue> get copyWith =>

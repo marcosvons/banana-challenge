@@ -22,6 +22,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     LoginRequested event,
     Emitter<AuthState> emit,
   ) async {
+    emit(const Authenticating());
     final user = await _authRepository.loginWithCredentials(
       email: event.email,
       password: event.password,

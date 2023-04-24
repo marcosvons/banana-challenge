@@ -1,5 +1,7 @@
 import 'package:auth/auth.dart';
+import 'package:banana_challenge/core/extensions/theme_extension.dart';
 import 'package:banana_challenge/core/injector/injector.dart';
+import 'package:banana_challenge/core/utils/theme_manager.dart';
 import 'package:banana_challenge/features/auth/bloc/auth_bloc.dart';
 import 'package:banana_challenge/features/auth/views/login_view.dart';
 import 'package:banana_challenge/l10n/l10n.dart';
@@ -14,12 +16,7 @@ class App extends StatelessWidget {
     return BlocProvider<AuthBloc>(
       create: (context) => AuthBloc(authRepository: getIt<IAuthRepository>()),
       child: MaterialApp(
-        theme: ThemeData(
-          appBarTheme: const AppBarTheme(color: Color(0xFF13B9FF)),
-          colorScheme: ColorScheme.fromSwatch(
-            accentColor: const Color(0xFF13B9FF),
-          ),
-        ),
+        theme: customTheme,
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         supportedLocales: AppLocalizations.supportedLocales,
         home: LoginView(),

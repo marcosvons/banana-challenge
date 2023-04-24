@@ -10,6 +10,7 @@ class LoginCubit extends Cubit<LoginState> {
           const LoginState.formValue(
             email: '',
             password: '',
+            showPassword: false,
           ),
         );
 
@@ -25,6 +26,14 @@ class LoginCubit extends Cubit<LoginState> {
     emit(
       state.copyWith(
         password: value,
+      ),
+    );
+  }
+
+  void changePasswordVisibility() {
+    emit(
+      state.copyWith(
+        showPassword: !state.showPassword,
       ),
     );
   }
