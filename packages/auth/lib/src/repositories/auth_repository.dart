@@ -37,6 +37,8 @@ class AuthRepository implements IAuthRepository {
           return const Left(Failure.jsonDec());
         } on TimeoutException {
           return const Left(Failure.connectTimeout());
+        } on UnauthorizedException {
+          return const Left(Failure.unauthorized());
         } on UnknownNetworkException {
           return const Left(Failure.unknown());
         }

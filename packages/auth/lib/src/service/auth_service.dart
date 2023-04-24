@@ -23,9 +23,7 @@ class AuthService implements IAuthService {
         },
       );
 
-      if (response.statusCode == 400) {
-        throw UnauthorizedException();
-      } else if (response.statusCode == 200) {
+      if (response.statusCode == 200) {
         return response.data as Map<String, dynamic>;
       } else {
         throw UnknownNetworkException();
@@ -37,6 +35,8 @@ class AuthService implements IAuthService {
         throw TimeoutException();
       } else if (e.type == DioErrorType.connectionError) {
         throw ConnectionErrorException();
+      } else if (e.type == DioErrorType.badResponse) {
+        throw UnauthorizedException();
       } else {
         throw UnknownNetworkException();
       }

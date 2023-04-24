@@ -3,5 +3,9 @@
     "welcome": "Welcome",
     "login": "Login",
     "email": "Email",
-    "password": "Password"
+    "password": "Password",
+    "issuesError": "We are experiencing some issues, please try again later",
+    "networkError": "Network error, please try again later",
+    "invalidCredentials": "Invalid credentials",
+    "unknownError": "Unknown error, please try again later"
 }

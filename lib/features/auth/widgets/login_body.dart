@@ -19,18 +19,11 @@ class LoginBody extends StatelessWidget {
               content: Text('Authenticated'),
             ),
           ),
-          authenticating: () {},
-          orElse: () => ScaffoldMessenger.of(
-            context,
-          ).showSnackBar(
-            const SnackBar(
-              content: Text('Unauthenticated'),
-            ),
-          ),
+          orElse: () {},
         );
       },
       child: Scaffold(
-        resizeToAvoidBottomInset: false,
+        // resizeToAvoidBottomInset: false,
         body: Center(
           child: SingleChildScrollView(
             child: Padding(
@@ -125,6 +118,26 @@ class LoginBody extends StatelessWidget {
                               },
                             ),
                           ),
+                        );
+                      },
+                    ),
+                    BlocBuilder<AuthBloc, AuthState>(
+                      builder: (context, state) {
+                        return state.maybeWhen(
+                          orElse: () => const SizedBox.shrink(),
+                          unauthenticated: (message) {
+                            return Padding(
+                              padding: const EdgeInsets.only(top: Sizes.medium),
+                              child: Text(
+                                message != null
+                                    ? message.failureMessage(context)
+                                    : '',
+                                style: context.textTheme.bodyLarge!.copyWith(
+                                  color: context.colorScheme.error,
+                                ),
+                              ),
+                            );
+                          },
                         );
                       },
                     ),

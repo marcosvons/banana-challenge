@@ -3,5 +3,10 @@
     "welcome": "Bienvenido",
     "login": "Iniciar sesión",
     "email": "Correo electrónico",
-    "password": "Contraseña"
+    "password": "Contraseña",
+    "issuesError": "Estamos experimentando problemas, por favor intenta luego",
+    "networkError": "Error de conexión, intenta mas tarde",
+    "invalidCredentials": "Credenciales inválidas",
+    "unknownError": "Ocurrió un error, intenta mas tarde"
+
 }
