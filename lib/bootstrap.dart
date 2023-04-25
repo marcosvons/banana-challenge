@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:developer';
 
+import 'package:banana_challenge/core/injector/injector.dart' as injector;
 import 'package:bloc/bloc.dart';
 import 'package:flutter/widgets.dart';
 
@@ -26,6 +27,9 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
   };
 
   Bloc.observer = const AppBlocObserver();
+
+  WidgetsFlutterBinding.ensureInitialized();
+  injector.initDependencies();
 
   await runZonedGuarded(
     () async => runApp(await builder()),
