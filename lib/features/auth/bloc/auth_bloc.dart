@@ -15,6 +15,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         super(const Unauthenticated()) {
     on<LoginRequested>(_onLoginRequested);
     on<LogoutRequested>(_onLogoutRequested);
+    on<CheckAuthentication>(_onCheckAuthentication);
+    add(const AuthEvent.checkAuthentication());
   }
 
   final IAuthRepository _authRepository;
@@ -37,7 +39,25 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   FutureOr<void> _onLogoutRequested(
     LogoutRequested event,
     Emitter<AuthState> emit,
-  ) {
+  ) async {
+    await _authRepository.removeUserFromCache();
     emit(const Unauthenticated());
+  }
+
+  FutureOr<void> _onCheckAuthentication(
+    CheckAuthentication event,
+    Emitter<AuthState> emit,
+  ) {
+    final user = _authRepository.getUserFromCache();
+    return user.fold(
+      (failure) => emit(const Unauthenticated()),
+      (user) {
+        if (user != null) {
+          emit(Authenticated(user));
+        } else {
+          emit(const Unauthenticated());
+        }
+      },
+    );
   }
 }

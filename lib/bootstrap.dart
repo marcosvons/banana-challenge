@@ -4,6 +4,8 @@ import 'dart:developer';
 import 'package:banana_challenge/core/injector/injector.dart' as injector;
 import 'package:bloc/bloc.dart';
 import 'package:flutter/widgets.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 class AppBlocObserver extends BlocObserver {
   const AppBlocObserver();
@@ -29,7 +31,8 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
   Bloc.observer = const AppBlocObserver();
 
   WidgetsFlutterBinding.ensureInitialized();
-  injector.initDependencies();
+  await Hive.initFlutter();
+  await injector.initDependencies();
 
   await runZonedGuarded(
     () async => runApp(await builder()),
