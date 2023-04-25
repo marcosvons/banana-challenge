@@ -26,6 +26,7 @@ class AuthRepository implements IAuthRepository {
             password: password,
           );
           final user = User.fromJson(userJson);
+          await saveUserInCache(user);
           return Right(user);
         } on ConnectionErrorException {
           return const Left(Failure.http());
@@ -47,6 +48,40 @@ class AuthRepository implements IAuthRepository {
       }
     } catch (e) {
       return const Left(Failure.unknown());
+    }
+  }
+
+  @override
+  Either<Failure, User?> getUserFromCache() {
+    try {
+      final userCache = _authService.getUserFromCache();
+      if (userCache != null) {
+        return Right(User.fromJson(userCache));
+      } else {
+        return const Right(null);
+      }
+    } catch (e) {
+      return const Left(Failure.cache());
+    }
+  }
+
+  @override
+  Future<Either<Failure, Unit>> removeUserFromCache() async {
+    try {
+      await _authService.removeUserFromCache();
+      return const Right(unit);
+    } catch (e) {
+      return const Left(Failure.cache());
+    }
+  }
+
+  @override
+  Future<Either<Failure, Unit>> saveUserInCache(User user) async {
+    try {
+      await _authService.saveUserInCache(user.toJson());
+      return const Right(unit);
+    } catch (e) {
+      return const Left(Failure.cache());
     }
   }
 }

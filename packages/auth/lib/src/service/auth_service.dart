@@ -1,13 +1,22 @@
 // ignore_for_file: public_member_api_docs
 
+import 'dart:convert';
+
 import 'package:auth/auth.dart';
+import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:errors/errors.dart';
+import 'package:hive/hive.dart';
 
 class AuthService implements IAuthService {
-  AuthService({required Dio dio}) : _dio = dio;
+  AuthService({
+    required Dio dio,
+    required Box<String> userBox,
+  })  : _dio = dio,
+        _userBox = userBox;
 
   final Dio _dio;
+  final Box<String> _userBox;
 
   @override
   Future<Map<String, dynamic>> loginWithCredentials({
@@ -42,6 +51,39 @@ class AuthService implements IAuthService {
       }
     } catch (e) {
       throw UnknownNetworkException();
+    }
+  }
+
+  @override
+  Map<String, dynamic>? getUserFromCache() {
+    try {
+      final userJson = _userBox.get('user');
+      if (userJson == null) {
+        return null;
+      }
+      return jsonDecode(userJson) as Map<String, dynamic>;
+    } catch (e) {
+      throw CacheException();
+    }
+  }
+
+  @override
+  Future<Unit> removeUserFromCache() async {
+    try {
+      await _userBox.delete('user');
+      return unit;
+    } catch (e) {
+      throw CacheException();
+    }
+  }
+
+  @override
+  Future<Unit> saveUserInCache(Map<String, dynamic> user) async {
+    try {
+      await _userBox.put('user', jsonEncode(user));
+      return unit;
+    } catch (e) {
+      throw CacheException();
     }
   }
 }

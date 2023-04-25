@@ -20,18 +20,21 @@ mixin _$AuthEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(String email, String password) loginRequested,
     required TResult Function() logoutRequested,
+    required TResult Function() checkAuthentication,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String email, String password)? loginRequested,
     TResult? Function()? logoutRequested,
+    TResult? Function()? checkAuthentication,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String email, String password)? loginRequested,
     TResult Function()? logoutRequested,
+    TResult Function()? checkAuthentication,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -39,18 +42,21 @@ mixin _$AuthEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(LoginRequested value) loginRequested,
     required TResult Function(LogoutRequested value) logoutRequested,
+    required TResult Function(CheckAuthentication value) checkAuthentication,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(LoginRequested value)? loginRequested,
     TResult? Function(LogoutRequested value)? logoutRequested,
+    TResult? Function(CheckAuthentication value)? checkAuthentication,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(LoginRequested value)? loginRequested,
     TResult Function(LogoutRequested value)? logoutRequested,
+    TResult Function(CheckAuthentication value)? checkAuthentication,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -148,6 +154,7 @@ class _$LoginRequested implements LoginRequested {
   TResult when<TResult extends Object?>({
     required TResult Function(String email, String password) loginRequested,
     required TResult Function() logoutRequested,
+    required TResult Function() checkAuthentication,
   }) {
     return loginRequested(email, password);
   }
@@ -157,6 +164,7 @@ class _$LoginRequested implements LoginRequested {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String email, String password)? loginRequested,
     TResult? Function()? logoutRequested,
+    TResult? Function()? checkAuthentication,
   }) {
     return loginRequested?.call(email, password);
   }
@@ -166,6 +174,7 @@ class _$LoginRequested implements LoginRequested {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String email, String password)? loginRequested,
     TResult Function()? logoutRequested,
+    TResult Function()? checkAuthentication,
     required TResult orElse(),
   }) {
     if (loginRequested != null) {
@@ -179,6 +188,7 @@ class _$LoginRequested implements LoginRequested {
   TResult map<TResult extends Object?>({
     required TResult Function(LoginRequested value) loginRequested,
     required TResult Function(LogoutRequested value) logoutRequested,
+    required TResult Function(CheckAuthentication value) checkAuthentication,
   }) {
     return loginRequested(this);
   }
@@ -188,6 +198,7 @@ class _$LoginRequested implements LoginRequested {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(LoginRequested value)? loginRequested,
     TResult? Function(LogoutRequested value)? logoutRequested,
+    TResult? Function(CheckAuthentication value)? checkAuthentication,
   }) {
     return loginRequested?.call(this);
   }
@@ -197,6 +208,7 @@ class _$LoginRequested implements LoginRequested {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(LoginRequested value)? loginRequested,
     TResult Function(LogoutRequested value)? logoutRequested,
+    TResult Function(CheckAuthentication value)? checkAuthentication,
     required TResult orElse(),
   }) {
     if (loginRequested != null) {
@@ -258,6 +270,7 @@ class _$LogoutRequested implements LogoutRequested {
   TResult when<TResult extends Object?>({
     required TResult Function(String email, String password) loginRequested,
     required TResult Function() logoutRequested,
+    required TResult Function() checkAuthentication,
   }) {
     return logoutRequested();
   }
@@ -267,6 +280,7 @@ class _$LogoutRequested implements LogoutRequested {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String email, String password)? loginRequested,
     TResult? Function()? logoutRequested,
+    TResult? Function()? checkAuthentication,
   }) {
     return logoutRequested?.call();
   }
@@ -276,6 +290,7 @@ class _$LogoutRequested implements LogoutRequested {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String email, String password)? loginRequested,
     TResult Function()? logoutRequested,
+    TResult Function()? checkAuthentication,
     required TResult orElse(),
   }) {
     if (logoutRequested != null) {
@@ -289,6 +304,7 @@ class _$LogoutRequested implements LogoutRequested {
   TResult map<TResult extends Object?>({
     required TResult Function(LoginRequested value) loginRequested,
     required TResult Function(LogoutRequested value) logoutRequested,
+    required TResult Function(CheckAuthentication value) checkAuthentication,
   }) {
     return logoutRequested(this);
   }
@@ -298,6 +314,7 @@ class _$LogoutRequested implements LogoutRequested {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(LoginRequested value)? loginRequested,
     TResult? Function(LogoutRequested value)? logoutRequested,
+    TResult? Function(CheckAuthentication value)? checkAuthentication,
   }) {
     return logoutRequested?.call(this);
   }
@@ -307,6 +324,7 @@ class _$LogoutRequested implements LogoutRequested {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(LoginRequested value)? loginRequested,
     TResult Function(LogoutRequested value)? logoutRequested,
+    TResult Function(CheckAuthentication value)? checkAuthentication,
     required TResult orElse(),
   }) {
     if (logoutRequested != null) {
@@ -318,6 +336,114 @@ class _$LogoutRequested implements LogoutRequested {
 
 abstract class LogoutRequested implements AuthEvent {
   const factory LogoutRequested() = _$LogoutRequested;
+}
+
+/// @nodoc
+abstract class _$$CheckAuthenticationCopyWith<$Res> {
+  factory _$$CheckAuthenticationCopyWith(_$CheckAuthentication value,
+          $Res Function(_$CheckAuthentication) then) =
+      __$$CheckAuthenticationCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$CheckAuthenticationCopyWithImpl<$Res>
+    extends _$AuthEventCopyWithImpl<$Res, _$CheckAuthentication>
+    implements _$$CheckAuthenticationCopyWith<$Res> {
+  __$$CheckAuthenticationCopyWithImpl(
+      _$CheckAuthentication _value, $Res Function(_$CheckAuthentication) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$CheckAuthentication implements CheckAuthentication {
+  const _$CheckAuthentication();
+
+  @override
+  String toString() {
+    return 'AuthEvent.checkAuthentication()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$CheckAuthentication);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String email, String password) loginRequested,
+    required TResult Function() logoutRequested,
+    required TResult Function() checkAuthentication,
+  }) {
+    return checkAuthentication();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String email, String password)? loginRequested,
+    TResult? Function()? logoutRequested,
+    TResult? Function()? checkAuthentication,
+  }) {
+    return checkAuthentication?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String email, String password)? loginRequested,
+    TResult Function()? logoutRequested,
+    TResult Function()? checkAuthentication,
+    required TResult orElse(),
+  }) {
+    if (checkAuthentication != null) {
+      return checkAuthentication();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(LoginRequested value) loginRequested,
+    required TResult Function(LogoutRequested value) logoutRequested,
+    required TResult Function(CheckAuthentication value) checkAuthentication,
+  }) {
+    return checkAuthentication(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(LoginRequested value)? loginRequested,
+    TResult? Function(LogoutRequested value)? logoutRequested,
+    TResult? Function(CheckAuthentication value)? checkAuthentication,
+  }) {
+    return checkAuthentication?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(LoginRequested value)? loginRequested,
+    TResult Function(LogoutRequested value)? logoutRequested,
+    TResult Function(CheckAuthentication value)? checkAuthentication,
+    required TResult orElse(),
+  }) {
+    if (checkAuthentication != null) {
+      return checkAuthentication(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class CheckAuthentication implements AuthEvent {
+  const factory CheckAuthentication() = _$CheckAuthentication;
 }
 
 /// @nodoc

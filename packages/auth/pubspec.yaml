@@ -17,6 +17,7 @@ dependencies:
   errors:
     path: ../errors
   internet_connection_checker: ^1.0.0+1
+  hive: ^2.2.3
 
 dev_dependencies:
   build_runner: ^2.3.3
