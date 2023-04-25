@@ -1,5 +1,6 @@
 import 'package:banana_challenge/core/core.dart';
 import 'package:banana_challenge/features/features.dart';
+import 'package:banana_challenge/features/products/views/products_page.dart';
 import 'package:banana_challenge/l10n/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -12,18 +13,17 @@ class LoginBody extends StatelessWidget {
     return BlocListener<AuthBloc, AuthState>(
       listener: (context, state) {
         state.maybeWhen(
-          authenticated: (user) => ScaffoldMessenger.of(
-            context,
-          ).showSnackBar(
-            const SnackBar(
-              content: Text('Authenticated'),
-            ),
-          ),
+          authenticated: (user) {
+            context
+                .read<ProductsBloc>()
+                .add(const ProductsEvent.loadProducts());
+            Navigator.of(context).push<void>(ProductsView.route());
+          },
           orElse: () {},
         );
       },
       child: Scaffold(
-        // resizeToAvoidBottomInset: false,
+        resizeToAvoidBottomInset: true,
         body: Center(
           child: SingleChildScrollView(
             child: Padding(
@@ -126,17 +126,19 @@ class LoginBody extends StatelessWidget {
                         return state.maybeWhen(
                           orElse: () => const SizedBox.shrink(),
                           unauthenticated: (message) {
-                            return Padding(
-                              padding: const EdgeInsets.only(top: Sizes.medium),
-                              child: Text(
-                                message != null
-                                    ? message.failureMessage(context)
-                                    : '',
-                                style: context.textTheme.bodyLarge!.copyWith(
-                                  color: context.colorScheme.error,
-                                ),
-                              ),
-                            );
+                            return message != null
+                                ? Padding(
+                                    padding: const EdgeInsets.only(
+                                        top: Sizes.medium),
+                                    child: Text(
+                                      message.getMessage(context),
+                                      style:
+                                          context.textTheme.bodyLarge!.copyWith(
+                                        color: context.colorScheme.error,
+                                      ),
+                                    ),
+                                  )
+                                : const SizedBox.shrink();
                           },
                         );
                       },

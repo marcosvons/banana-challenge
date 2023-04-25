@@ -1,7 +1,5 @@
-/// {@template products}
-/// A Very Good Project created by Very Good CLI.
-/// {@endtemplate}
-class Products {
-  /// {@macro products}
-  const Products();
-}
+export 'models/product.dart';
+export 'repositories/i_product_repository.dart';
+export 'repositories/product_repository.dart';
+export 'service/i_products_service.dart';
+export 'service/products_service.dart';

@@ -14,6 +14,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       : _authRepository = authRepository,
         super(const Unauthenticated()) {
     on<LoginRequested>(_onLoginRequested);
+    on<LogoutRequested>(_onLogoutRequested);
   }
 
   final IAuthRepository _authRepository;
@@ -31,5 +32,12 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       (failure) => emit(Unauthenticated(failure: failure)),
       (user) => emit(Authenticated(user)),
     );
+  }
+
+  FutureOr<void> _onLogoutRequested(
+    LogoutRequested event,
+    Emitter<AuthState> emit,
+  ) {
+    emit(const Unauthenticated());
   }
 }

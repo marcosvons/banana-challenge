@@ -7,5 +7,23 @@
     "issuesError": "We are experiencing some issues, please try again later",
     "networkError": "Network error, please try again later",
     "invalidCredentials": "Invalid credentials",
-    "unknownError": "Unknown error, please try again later"
+    "unknownError": "Unknown error, please try again later",
+    "stock": "Stock",
+    "appTitle": "Flutter Challenge 2023",
+    "price": "USD",
+    "search": "Search",
+    "noSearchResults": "No results found, try another word",
+    "discount": "OFF",
+    "stockRemaining": "left in stock",
+    "by": "by",
+    "addToCart": "Add to Cart",
+    "addedToCart": "{product} added to Cart",
+    "@addedToCart":{
+        "placeholders":{
+            "product": {
+                "type": "String"
+            }
+        }
+    }
+
 }

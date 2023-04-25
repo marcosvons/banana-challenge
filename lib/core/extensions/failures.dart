@@ -3,7 +3,7 @@ import 'package:errors/errors.dart';
 import 'package:flutter/material.dart';
 
 extension FailureExtension on Failure {
-  String failureMessage(BuildContext context) {
+  String getMessage(BuildContext context) {
     if (this is JsonDeserializationFailure || this is JsonDecodeFailure) {
       return context.l10n.issuesError;
     } else if (this is HttpFailure ||
