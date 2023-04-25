@@ -19,32 +19,38 @@ mixin _$ProductsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loadProducts,
+    required TResult Function(String query) searchProducts,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loadProducts,
+    TResult? Function(String query)? searchProducts,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadProducts,
+    TResult Function(String query)? searchProducts,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_LoadProducts value) loadProducts,
+    required TResult Function(_SearchProducts value) searchProducts,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LoadProducts value)? loadProducts,
+    TResult? Function(_SearchProducts value)? searchProducts,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoadProducts value)? loadProducts,
+    TResult Function(_SearchProducts value)? searchProducts,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -107,6 +113,7 @@ class _$_LoadProducts implements _LoadProducts {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loadProducts,
+    required TResult Function(String query) searchProducts,
   }) {
     return loadProducts();
   }
@@ -115,6 +122,7 @@ class _$_LoadProducts implements _LoadProducts {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loadProducts,
+    TResult? Function(String query)? searchProducts,
   }) {
     return loadProducts?.call();
   }
@@ -123,6 +131,7 @@ class _$_LoadProducts implements _LoadProducts {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadProducts,
+    TResult Function(String query)? searchProducts,
     required TResult orElse(),
   }) {
     if (loadProducts != null) {
@@ -135,6 +144,7 @@ class _$_LoadProducts implements _LoadProducts {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_LoadProducts value) loadProducts,
+    required TResult Function(_SearchProducts value) searchProducts,
   }) {
     return loadProducts(this);
   }
@@ -143,6 +153,7 @@ class _$_LoadProducts implements _LoadProducts {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LoadProducts value)? loadProducts,
+    TResult? Function(_SearchProducts value)? searchProducts,
   }) {
     return loadProducts?.call(this);
   }
@@ -151,6 +162,7 @@ class _$_LoadProducts implements _LoadProducts {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoadProducts value)? loadProducts,
+    TResult Function(_SearchProducts value)? searchProducts,
     required TResult orElse(),
   }) {
     if (loadProducts != null) {
@@ -165,29 +177,166 @@ abstract class _LoadProducts implements ProductsEvent {
 }
 
 /// @nodoc
+abstract class _$$_SearchProductsCopyWith<$Res> {
+  factory _$$_SearchProductsCopyWith(
+          _$_SearchProducts value, $Res Function(_$_SearchProducts) then) =
+      __$$_SearchProductsCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String query});
+}
+
+/// @nodoc
+class __$$_SearchProductsCopyWithImpl<$Res>
+    extends _$ProductsEventCopyWithImpl<$Res, _$_SearchProducts>
+    implements _$$_SearchProductsCopyWith<$Res> {
+  __$$_SearchProductsCopyWithImpl(
+      _$_SearchProducts _value, $Res Function(_$_SearchProducts) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? query = null,
+  }) {
+    return _then(_$_SearchProducts(
+      null == query
+          ? _value.query
+          : query // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_SearchProducts implements _SearchProducts {
+  const _$_SearchProducts(this.query);
+
+  @override
+  final String query;
+
+  @override
+  String toString() {
+    return 'ProductsEvent.searchProducts(query: $query)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_SearchProducts &&
+            (identical(other.query, query) || other.query == query));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, query);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_SearchProductsCopyWith<_$_SearchProducts> get copyWith =>
+      __$$_SearchProductsCopyWithImpl<_$_SearchProducts>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loadProducts,
+    required TResult Function(String query) searchProducts,
+  }) {
+    return searchProducts(query);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loadProducts,
+    TResult? Function(String query)? searchProducts,
+  }) {
+    return searchProducts?.call(query);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loadProducts,
+    TResult Function(String query)? searchProducts,
+    required TResult orElse(),
+  }) {
+    if (searchProducts != null) {
+      return searchProducts(query);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_LoadProducts value) loadProducts,
+    required TResult Function(_SearchProducts value) searchProducts,
+  }) {
+    return searchProducts(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LoadProducts value)? loadProducts,
+    TResult? Function(_SearchProducts value)? searchProducts,
+  }) {
+    return searchProducts?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoadProducts value)? loadProducts,
+    TResult Function(_SearchProducts value)? searchProducts,
+    required TResult orElse(),
+  }) {
+    if (searchProducts != null) {
+      return searchProducts(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SearchProducts implements ProductsEvent {
+  const factory _SearchProducts(final String query) = _$_SearchProducts;
+
+  String get query;
+  @JsonKey(ignore: true)
+  _$$_SearchProductsCopyWith<_$_SearchProducts> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$ProductsState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Product> products) loaded,
-    required TResult Function(String message) error,
+    required TResult Function(
+            List<Product> products, List<Product?> searchedProducts)
+        loaded,
+    required TResult Function(Failure failure) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Product> products)? loaded,
-    TResult? Function(String message)? error,
+    TResult? Function(List<Product> products, List<Product?> searchedProducts)?
+        loaded,
+    TResult? Function(Failure failure)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Product> products)? loaded,
-    TResult Function(String message)? error,
+    TResult Function(List<Product> products, List<Product?> searchedProducts)?
+        loaded,
+    TResult Function(Failure failure)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -275,8 +424,10 @@ class _$_Initial implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Product> products) loaded,
-    required TResult Function(String message) error,
+    required TResult Function(
+            List<Product> products, List<Product?> searchedProducts)
+        loaded,
+    required TResult Function(Failure failure) error,
   }) {
     return initial();
   }
@@ -286,8 +437,9 @@ class _$_Initial implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Product> products)? loaded,
-    TResult? Function(String message)? error,
+    TResult? Function(List<Product> products, List<Product?> searchedProducts)?
+        loaded,
+    TResult? Function(Failure failure)? error,
   }) {
     return initial?.call();
   }
@@ -297,8 +449,9 @@ class _$_Initial implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Product> products)? loaded,
-    TResult Function(String message)? error,
+    TResult Function(List<Product> products, List<Product?> searchedProducts)?
+        loaded,
+    TResult Function(Failure failure)? error,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -388,8 +541,10 @@ class _$_Loading implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Product> products) loaded,
-    required TResult Function(String message) error,
+    required TResult Function(
+            List<Product> products, List<Product?> searchedProducts)
+        loaded,
+    required TResult Function(Failure failure) error,
   }) {
     return loading();
   }
@@ -399,8 +554,9 @@ class _$_Loading implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Product> products)? loaded,
-    TResult? Function(String message)? error,
+    TResult? Function(List<Product> products, List<Product?> searchedProducts)?
+        loaded,
+    TResult? Function(Failure failure)? error,
   }) {
     return loading?.call();
   }
@@ -410,8 +566,9 @@ class _$_Loading implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Product> products)? loaded,
-    TResult Function(String message)? error,
+    TResult Function(List<Product> products, List<Product?> searchedProducts)?
+        loaded,
+    TResult Function(Failure failure)? error,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -467,7 +624,7 @@ abstract class _$$_LoadedCopyWith<$Res> {
   factory _$$_LoadedCopyWith(_$_Loaded value, $Res Function(_$_Loaded) then) =
       __$$_LoadedCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<Product> products});
+  $Res call({List<Product> products, List<Product?> searchedProducts});
 }
 
 /// @nodoc
@@ -481,12 +638,17 @@ class __$$_LoadedCopyWithImpl<$Res>
   @override
   $Res call({
     Object? products = null,
+    Object? searchedProducts = null,
   }) {
     return _then(_$_Loaded(
-      null == products
+      products: null == products
           ? _value._products
           : products // ignore: cast_nullable_to_non_nullable
               as List<Product>,
+      searchedProducts: null == searchedProducts
+          ? _value._searchedProducts
+          : searchedProducts // ignore: cast_nullable_to_non_nullable
+              as List<Product?>,
     ));
   }
 }
@@ -494,7 +656,11 @@ class __$$_LoadedCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_Loaded implements _Loaded {
-  const _$_Loaded(final List<Product> products) : _products = products;
+  const _$_Loaded(
+      {required final List<Product> products,
+      required final List<Product?> searchedProducts})
+      : _products = products,
+        _searchedProducts = searchedProducts;
 
   final List<Product> _products;
   @override
@@ -504,9 +670,18 @@ class _$_Loaded implements _Loaded {
     return EqualUnmodifiableListView(_products);
   }
 
+  final List<Product?> _searchedProducts;
+  @override
+  List<Product?> get searchedProducts {
+    if (_searchedProducts is EqualUnmodifiableListView)
+      return _searchedProducts;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_searchedProducts);
+  }
+
   @override
   String toString() {
-    return 'ProductsState.loaded(products: $products)';
+    return 'ProductsState.loaded(products: $products, searchedProducts: $searchedProducts)';
   }
 
   @override
@@ -514,12 +689,16 @@ class _$_Loaded implements _Loaded {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Loaded &&
-            const DeepCollectionEquality().equals(other._products, _products));
+            const DeepCollectionEquality().equals(other._products, _products) &&
+            const DeepCollectionEquality()
+                .equals(other._searchedProducts, _searchedProducts));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_products));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_products),
+      const DeepCollectionEquality().hash(_searchedProducts));
 
   @JsonKey(ignore: true)
   @override
@@ -532,10 +711,12 @@ class _$_Loaded implements _Loaded {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Product> products) loaded,
-    required TResult Function(String message) error,
+    required TResult Function(
+            List<Product> products, List<Product?> searchedProducts)
+        loaded,
+    required TResult Function(Failure failure) error,
   }) {
-    return loaded(products);
+    return loaded(products, searchedProducts);
   }
 
   @override
@@ -543,10 +724,11 @@ class _$_Loaded implements _Loaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Product> products)? loaded,
-    TResult? Function(String message)? error,
+    TResult? Function(List<Product> products, List<Product?> searchedProducts)?
+        loaded,
+    TResult? Function(Failure failure)? error,
   }) {
-    return loaded?.call(products);
+    return loaded?.call(products, searchedProducts);
   }
 
   @override
@@ -554,12 +736,13 @@ class _$_Loaded implements _Loaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Product> products)? loaded,
-    TResult Function(String message)? error,
+    TResult Function(List<Product> products, List<Product?> searchedProducts)?
+        loaded,
+    TResult Function(Failure failure)? error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(products);
+      return loaded(products, searchedProducts);
     }
     return orElse();
   }
@@ -603,9 +786,12 @@ class _$_Loaded implements _Loaded {
 }
 
 abstract class _Loaded implements ProductsState {
-  const factory _Loaded(final List<Product> products) = _$_Loaded;
+  const factory _Loaded(
+      {required final List<Product> products,
+      required final List<Product?> searchedProducts}) = _$_Loaded;
 
   List<Product> get products;
+  List<Product?> get searchedProducts;
   @JsonKey(ignore: true)
   _$$_LoadedCopyWith<_$_Loaded> get copyWith =>
       throw _privateConstructorUsedError;
@@ -616,7 +802,9 @@ abstract class _$$_ErrorCopyWith<$Res> {
   factory _$$_ErrorCopyWith(_$_Error value, $Res Function(_$_Error) then) =
       __$$_ErrorCopyWithImpl<$Res>;
   @useResult
-  $Res call({String message});
+  $Res call({Failure failure});
+
+  $FailureCopyWith<$Res> get failure;
 }
 
 /// @nodoc
@@ -629,28 +817,36 @@ class __$$_ErrorCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? message = null,
+    Object? failure = null,
   }) {
     return _then(_$_Error(
-      null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
+      null == failure
+          ? _value.failure
+          : failure // ignore: cast_nullable_to_non_nullable
+              as Failure,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $FailureCopyWith<$Res> get failure {
+    return $FailureCopyWith<$Res>(_value.failure, (value) {
+      return _then(_value.copyWith(failure: value));
+    });
   }
 }
 
 /// @nodoc
 
 class _$_Error implements _Error {
-  const _$_Error(this.message);
+  const _$_Error(this.failure);
 
   @override
-  final String message;
+  final Failure failure;
 
   @override
   String toString() {
-    return 'ProductsState.error(message: $message)';
+    return 'ProductsState.error(failure: $failure)';
   }
 
   @override
@@ -658,11 +854,11 @@ class _$_Error implements _Error {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Error &&
-            (identical(other.message, message) || other.message == message));
+            (identical(other.failure, failure) || other.failure == failure));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, message);
+  int get hashCode => Object.hash(runtimeType, failure);
 
   @JsonKey(ignore: true)
   @override
@@ -675,10 +871,12 @@ class _$_Error implements _Error {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Product> products) loaded,
-    required TResult Function(String message) error,
+    required TResult Function(
+            List<Product> products, List<Product?> searchedProducts)
+        loaded,
+    required TResult Function(Failure failure) error,
   }) {
-    return error(message);
+    return error(failure);
   }
 
   @override
@@ -686,10 +884,11 @@ class _$_Error implements _Error {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Product> products)? loaded,
-    TResult? Function(String message)? error,
+    TResult? Function(List<Product> products, List<Product?> searchedProducts)?
+        loaded,
+    TResult? Function(Failure failure)? error,
   }) {
-    return error?.call(message);
+    return error?.call(failure);
   }
 
   @override
@@ -697,12 +896,13 @@ class _$_Error implements _Error {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Product> products)? loaded,
-    TResult Function(String message)? error,
+    TResult Function(List<Product> products, List<Product?> searchedProducts)?
+        loaded,
+    TResult Function(Failure failure)? error,
     required TResult orElse(),
   }) {
     if (error != null) {
-      return error(message);
+      return error(failure);
     }
     return orElse();
   }
@@ -746,9 +946,9 @@ class _$_Error implements _Error {
 }
 
 abstract class _Error implements ProductsState {
-  const factory _Error(final String message) = _$_Error;
+  const factory _Error(final Failure failure) = _$_Error;
 
-  String get message;
+  Failure get failure;
   @JsonKey(ignore: true)
   _$$_ErrorCopyWith<_$_Error> get copyWith =>
       throw _privateConstructorUsedError;

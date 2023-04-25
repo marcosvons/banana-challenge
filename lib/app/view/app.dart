@@ -1,9 +1,7 @@
 import 'package:auth/auth.dart';
-import 'package:banana_challenge/core/extensions/theme_extension.dart';
 import 'package:banana_challenge/core/injector/injector.dart';
 import 'package:banana_challenge/core/utils/theme_manager.dart';
-import 'package:banana_challenge/features/auth/bloc/auth_bloc.dart';
-import 'package:banana_challenge/features/auth/views/login_view.dart';
+import 'package:banana_challenge/core/widgets/splash.dart';
 import 'package:banana_challenge/features/features.dart';
 import 'package:banana_challenge/l10n/l10n.dart';
 import 'package:flutter/material.dart';
@@ -28,9 +26,10 @@ class App extends StatelessWidget {
       ],
       child: MaterialApp(
         theme: customTheme,
+        debugShowCheckedModeBanner: false,
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         supportedLocales: AppLocalizations.supportedLocales,
-        home: LoginView(),
+        home: const BananaSplash(),
       ),
     );
   }

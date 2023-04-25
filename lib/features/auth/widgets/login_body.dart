@@ -14,14 +14,16 @@ class LoginBody extends StatelessWidget {
       listener: (context, state) {
         state.maybeWhen(
           authenticated: (user) {
-            context.read<ProductsBloc>().add(const ProductsEvent.loadProducts());
+            context
+                .read<ProductsBloc>()
+                .add(const ProductsEvent.loadProducts());
             Navigator.of(context).push<void>(ProductsView.route());
           },
           orElse: () {},
         );
       },
       child: Scaffold(
-        // resizeToAvoidBottomInset: false,
+        resizeToAvoidBottomInset: true,
         body: Center(
           child: SingleChildScrollView(
             child: Padding(
@@ -124,17 +126,19 @@ class LoginBody extends StatelessWidget {
                         return state.maybeWhen(
                           orElse: () => const SizedBox.shrink(),
                           unauthenticated: (message) {
-                            return Padding(
-                              padding: const EdgeInsets.only(top: Sizes.medium),
-                              child: Text(
-                                message != null
-                                    ? message.failureMessage(context)
-                                    : '',
-                                style: context.textTheme.bodyLarge!.copyWith(
-                                  color: context.colorScheme.error,
-                                ),
-                              ),
-                            );
+                            return message != null
+                                ? Padding(
+                                    padding: const EdgeInsets.only(
+                                        top: Sizes.medium),
+                                    child: Text(
+                                      message.getMessage(context),
+                                      style:
+                                          context.textTheme.bodyLarge!.copyWith(
+                                        color: context.colorScheme.error,
+                                      ),
+                                    ),
+                                  )
+                                : const SizedBox.shrink();
                           },
                         );
                       },
