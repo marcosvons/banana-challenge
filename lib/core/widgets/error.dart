@@ -6,8 +6,9 @@ Widget error({
   required BuildContext context,
   required String errorMessage,
 }) {
-  return Expanded(
-    child: Align(
+  return Align(
+    child: SizedBox(
+      height: context.height * 0.5,
       child: SingleChildScrollView(
         child: Column(
           children: [
