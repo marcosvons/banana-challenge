@@ -24,6 +24,8 @@
                 "type": "String"
             }
         }
-    }
+    },
+    "tryAgain": "Try again"
+
 
 }

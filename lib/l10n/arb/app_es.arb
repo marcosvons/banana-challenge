@@ -17,5 +17,13 @@
     "stockRemaining": "en stock",
     "by": "por",
     "addToCart": "Agregar al carrito",
-    "addedToCart": "Agregado al carrito"
+    "addedToCart": "Agregado al carrito",
+    "@addedToCart":{
+        "placeholders":{
+            "product": {
+                "type": "String"
+            }
+        }
+    },
+    "tryAgain": "Intentar de nuevo"
 }
