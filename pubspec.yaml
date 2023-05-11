@@ -11,7 +11,7 @@ dependencies:
     path: packages/auth
   bloc: ^8.1.1
   dartz: ^0.10.1
-  dio: ^5.1.1
+  dio: ^5.1.2
   errors:
     path: packages/errors
   products:
